@@ -44,9 +44,29 @@ public class Node<N>{
 
 }
 
+class Vertex<N> extends Node<N>{
+    //MEMBER VARIABLES
+    private int dimension;
 
+    //MEMBER FUNCTIONS
+    //default constructor
+    public Vertex(){
+        super();
+        this.add("Coordinates", null);
+    }
 
+    //constructor applies ID and dimension
+    public Vertex(N identifier, int dim){
+        super(identifier);
+        this.dimension = dim;
+        this.add("Coordinates", new Number[dim]);
+    }
 
+    //ACCESSORS
+
+    //MUTATORS
+    
+}
 
 
 
