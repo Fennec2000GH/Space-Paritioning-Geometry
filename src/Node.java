@@ -1,67 +1,48 @@
-import java.util.Iterator;
 import java.util.Map;
-import javolution.util.FastMap;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 public class Node<N>{
+    //MEMBER VARIABLES
+    private N id;
+    private TreeMap<String, Object> attributes;
+
     //CONSTRUCTORS
-    public Node(N identifier){
-        this.id = identifier;
-    }
+    //default constructor
+    public Node(N identifier){ this.id = identifier; }
 
     //ACCESSORS
-    public N getID(){
-        return this.id;
-    }
+    //gets ID
+    public N getID(){ return this.id; }
 
-    public String getInfo(String key){
-        return this.info.get(key).get();
-    }
-
-    public Variant getInfoAsVariant(String key){
-        return this.info.get(key);
-    }
-
-    public void printNode(){
-        System.out.println(this.id + " (Node) ");
-        for(int i = 1; i <= String.valueOf(this.id).length() + 8; i++)
-            System.out.print("-");
-        System.out.println("");
-        System.out.println("ID: " + this.id);
-        System.out.println("Info: ");
-        Iterator<Map.Entry<String, Variant>> it = this.info.entrySet().iterator();
-        while(it.hasNext()){
-            Map.Entry<String, Variant> entry = it.next();
-            System.out.println("\t" + entry.getKey() + " : " + entry.getValue().get());
-        }
-        return;
-
+    //gets the titles of all attributes in alphanumeric order
+    public String[] getAttributeAsArray(String key){
+        String[] output = new String[this.attributes.keySet().size()];
+        this.attributes.keySet().stream().sorted().collect(Collectors.toList()).toArray(output);
+        return output;
     }
 
     //MUTATORS
-    public void setID(N identifier){
-        this.id = identifier;
-    }
+    //sets new ID
+    public void setID(N identifier){ this.id = identifier; }
 
-    public <T> boolean addInfo(String key, T val){
-        if(this.info.keySet().contains(key))
+    //adds new attribute that does not previously exist
+    public boolean add(String key, Object obj){
+        if(this.attributes.containsKey(key))
             return false;
-        this.info.put(key, new Variant(val));
+        this.attributes.put(key, obj);
         return true;
     }
 
-    public boolean addInfo(String key, Variant val){
-        if(this.info.keySet().contains(key))
+    //adds multiple attributes such that each new attribute does not previously exist
+    public boolean addAll(Map<String, Object> newAttributes){
+        if(this.attributes.keySet().stream().anyMatch(newAttributes::containsKey))
             return false;
-        this.info.put(key, val);
+        this.attributes.putAll(newAttributes);
         return true;
     }
 
-    //MEMBER VARIABLES
-    protected N id;
-    protected FastMap<String, Variant> info;
-
-};
-
+}
 
 
 
