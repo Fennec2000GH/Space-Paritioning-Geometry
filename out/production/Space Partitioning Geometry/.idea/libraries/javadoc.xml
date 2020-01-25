@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="javadoc">
+    <CLASSES />
+    <JAVADOC>
+      <root url="file:///Library/Java/Extensions/jts-1.14/doc/javadoc" />
+      <root url="file:///Library/Java/Extensions/jts-1.14/jtsio/doc/javadoc" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>

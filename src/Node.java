@@ -149,7 +149,7 @@ class Vertex<N> extends Node<N>{
             temp.put(v1.coordinateAt(pos - 1), v2.coordinateAt(pos -1));
         return Math.sqrt(temp.entrySet().stream()
                 .mapToDouble(n -> Math.pow(n.getKey().doubleValue() - n.getValue().doubleValue(), 2))
-                .sum()); 
+                .sum());
     }
 
     //calculates Manhattan distance between 2 Vertex
