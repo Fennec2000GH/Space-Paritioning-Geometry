@@ -11,5 +11,6 @@
     <orderEntry type="library" name="javadoc" level="project" />
     <orderEntry type="library" name="org.javatuples:javatuples:1.2" level="application" />
     <orderEntry type="library" name="no.mechatronics.sfi.fmi4j:fmi-import-solvers-apache-math3:0.13.1" level="application" />
+    <orderEntry type="library" name="com.google.guava:guava-jdk5:17.0" level="application" />
   </component>
 </module>
